@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const Navbar = () => {
+const EventNavbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage menu open/close
 
   const toggleMenu = () => {
@@ -14,12 +14,12 @@ const Navbar = () => {
         {/* Centered Section for Larger Screens */}
         <div className="hidden md:flex w-full justify-center space-x-10 font-light text-lg">
           
-        <a href="/public/events/LetMeHack" className="hover:text-gray-400">Let Me Hack</a>
-          <a href="/public/events/FortNight" className="hover:text-gray-400">FortNight</a>
-          <a href="#" className="hover:text-gray-400">Virtual Rival</a>
-          <a href="#" className="hover:text-gray-400">CodeNight</a>
-          <a href="#" className="hover:text-gray-400">Connecting Dots</a>
-          <a href="#" className="hover:text-gray-400">Vidunena</a>
+          <a href="LetMeHack" className="hover:text-gray-400">Let Me Hack</a>
+          <a href="FortNight" className="hover:text-gray-400">FortNight</a>
+          <a href="VirtualRival" className="hover:text-gray-400">Virtual Rival</a>
+          <a href="CodeNight" className="hover:text-gray-400">CodeNight</a>
+          <a href="ConnectingDots" className="hover:text-gray-400">Connecting Dots</a>
+          <a href="Vidunena" className="hover:text-gray-400">Vidunena</a>
         </div>
 
         {/* Mobile Menu Icon for xs, sm Screens */}
@@ -48,8 +48,8 @@ const Navbar = () => {
       {/* Dropdown Menu for Mobile Screens */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 py-2 space-y-2 bg-black text-left">
-          <a href="/public/events/LetMeHack" className="block hover:text-gray-400">Let Me Hack</a>
-          <a href="/public/events/FortNight" className="block hover:text-gray-400">FortNight</a>
+          <a href="/events/LetMeHack" className="block hover:text-gray-400">Let Me Hack</a>
+          <a href="/events/FortNight" className="block hover:text-gray-400">FortNight</a>
           <a href="#" className="block hover:text-gray-400">Virtual Rival</a>
           <a href="#" className="block hover:text-gray-400">CodeNight</a>
           <a href="#" className="block hover:text-gray-400">Connecting Dots</a>
@@ -60,4 +60,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default EventNavbar;

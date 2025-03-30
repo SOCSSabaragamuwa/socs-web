@@ -1,6 +1,6 @@
  "use client";
 import Navbar from "@/components/navbar";
-import EventNavBar from "@/components/eventsNavBar";
+import EventNavBar from "@/components/events/eventsNavBar";
 import ImageSlider from "@/components/cardSliderPage";
 import { Poppins } from "next/font/google";
 import Footer from "@/components/footer";
