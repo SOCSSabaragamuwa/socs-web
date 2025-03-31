@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "@/components/navbar";
-import EventNavBar from "@/components/eventsNavBar";
+import EventNavBar from "@/components/events/eventsNavBar";
 import ImageSlider from "@/components/cardSliderPage";
 import { Poppins } from "next/font/google";
 import Footer from "@/components/footer";
@@ -64,7 +64,7 @@ function FortNight() {
               Events
             </h1>
           </div>
-    
+
           <div className="bg-black text-white">
             <EventNavBar></EventNavBar>
           </div>
@@ -75,7 +75,7 @@ function FortNight() {
               FortNight
             </h1>
           </div>
-    
+
           <div>
             <div className="grid grid-cols-6 grid-rows-2 gap-4  md:px-[100px]">
               <div>
@@ -150,7 +150,7 @@ function FortNight() {
       <h2 className={`${poppins3.className} text-5xl font-semibold mb-4 text-white text-center py-[70px]`}>UPDATES</h2>
       </div>
           <Footer/>
-          
+
         </div>
       );
     }
