@@ -95,20 +95,24 @@ export default function Home() {
 
       <CollaborationsSection></CollaborationsSection>
       <div className="px-[30px] lg:px-[100px] md:px-[50px] pb-[100px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="flex justify-center">
-              <Image
-                src="/images/colab.png"
-                alt={`Image ${item}`}
-                width={250}
-                height={250}
-                className="w-[250px] h-[250px] object-cover"
-              />
-            </div>
-          ))}
-        </div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {[
+      { id: 1, img: "/images/ieee.png" },
+      { id: 2, img: "/images/echonlabs.png" },
+      { id: 3, img: "/images/taproit.png" }
+    ].map((item) => (
+      <div key={item.id} className="flex justify-center">
+        <Image
+          src={item.img}
+          alt={`Collaborator ${item.id}`}
+          width={250}
+          height={250}
+          className="w-[250px] h-[250px] object-cover"
+        />
       </div>
+    ))}
+  </div>
+</div>
 
       {/* Banner Section */}
       <section className="relative text-center" style={{ height: "500px" }}>
