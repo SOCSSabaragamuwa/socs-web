@@ -14,105 +14,109 @@ interface Pioneer {
 const teamData: Record<number, Pioneer[]> = {
   2023: [
     {
-      name: "Mr. ABC Perera",
+      name: "Mr. V.S.A. Vidanage ",
       role: "President",
-      imageSrc: "/images/president.png",
+      imageSrc: "/pioneers/2023/president.png",
     },
     {
-      name: "Mr. ABC Perera",
+      name: "Mr. G.R.S.N. Wimalasooriya ",
       role: "Secretary",
-      imageSrc: "/images/secretary.png",
+      imageSrc: "/pioneers/2023/secretary.png",
     },
     {
-      name: "Mr. ABC Perera",
+      name: "Ms. P.M.A.K. Wijeratne",
       role: "Senior Treasurer",
-      imageSrc: "/images/treasurer.png",
+      imageSrc: "/pioneers/2023/streasurer.png",
     },
     {
-      name: "Mr. ABC Perera",
+      name: "Mr. A.C. Kothalawala",
       role: "Treasurer",
-      imageSrc: "/images/treasurer.png",
+      imageSrc: "/pioneers/2023/treasurer.png",
     },
     {
       name: "Mr. ABC Perera",
-      role: "Vice President",
-      imageSrc: "/images/vp.png",
+      role: "Mr. P.W.C.J. Senarathna",
+      imageSrc: "/pioneers/2023/vp.png",
     },
-    { name: "Mr. ABC Perera", role: "Editor", imageSrc: "/images/editor.png" },
+    { name: "Mr. R.M.H.K. Ranasinghe",
+      role: "Editor",
+      imageSrc: "/pioneers/2023/editor.png" },
     {
-      name: "Mr. ABC Perera",
+      name: "Ms. A.M.R.M. Kularathne",
       role: "Vice Secretary",
-      imageSrc: "/images/vice-secretary.png",
+      imageSrc: "/pioneers/2023/vs.png",
     },
   ],
   2022: [
     {
-      name: "Mr. XYZ Silva",
+      name: "Mr. Bihan De Silva",
       role: "President",
-      imageSrc: "/images/president.png",
+      imageSrc: "/pioneers/2022/president.png",
     },
     {
-      name: "Mr. XYZ Silva",
+      name: "Mr. Shavinda Wanigasekara",
       role: "Secretary",
-      imageSrc: "/images/secretary.png",
+      imageSrc: "/pioneers/2022/secretary.png",
     },
     {
-      name: "Mr. XYZ Silva",
+      name: "Mr. P. Vigneshwaran",
       role: "Senior Treasurer",
-      imageSrc: "/images/treasurer.png",
+      imageSrc: "/pioneers/2022/treasurer.png",
     },
     {
-      name: "Mr. XYZ Silva",
+      name: " Mr. Ishan Randika",
       role: "Treasurer",
-      imageSrc: "/images/treasurer.png",
+      imageSrc: "/pioneers/2022/treasurer.png",
     },
     {
-      name: "Mr. XYZ Silva",
+      name: "Mr. Amila Silva",
       role: "Vice President",
-      imageSrc: "/images/vp.png",
+      imageSrc: "/pioneers/2022/vp.png",
     },
-    { name: "Mr. XYZ Silva", role: "Editor", imageSrc: "/images/editor.png" },
+    { name: "Mr. Aravinda Nawarathne",
+      role: "Editor",
+      imageSrc: "/pioneers/2022/editor.png" },
     {
-      name: "Mr. XYZ Silva",
+      name: "Ms. Madhumini Kodithuwakku",
       role: "Vice Secretary",
-      imageSrc: "/images/vice-secretary.png",
+      imageSrc: "/pioneers/2022/vs.png",
     },
   ],
   2021: [
     {
-      name: "Mr. LMN Fernando",
+      name: "Mr. Nayanajith Priyasad",
       role: "President",
-      imageSrc: "/images/president.png",
+      imageSrc: "/pioneers/2021/president.png",
     },
     {
-      name: "Mr. LMN Fernando",
+      name: "Mr. Sapthaka Arthasad",
       role: "Secretary",
-      imageSrc: "/images/secretary.png",
+      imageSrc: "/pioneers/2021/secretary.png",
     },
     {
-      name: "Mr. LMN Fernando",
+      name: "Mr. Banujan Kuhaneswaran",
       role: "Senior Treasurer",
-      imageSrc: "/images/treasurer.png",
+      imageSrc: "/pioneers/2021/treasurer.png",
     },
     {
-      name: "Mr. LMN Fernando",
+      name: "Mr. Malindu Shamalka",
       role: "Treasurer",
-      imageSrc: "/images/treasurer.png",
+      imageSrc: "/pioneers/2021/treasurer.png",
     },
     {
-      name: "Mr. LMN Fernando",
+      name: "Mr. Yasiru Geevinda",
       role: "Vice President",
-      imageSrc: "/images/vp.png",
+      imageSrc: "/pioneers/2021/vp.png",
     },
     {
-      name: "Mr. LMN Fernando",
+      name: "Mr. Tharaka Dilruk",
       role: "Editor",
-      imageSrc: "/images/editor.png",
+      imageSrc: "/pioneers/2021/editor.png",
     },
     {
-      name: "Mr. LMN Fernando",
+      name: "Ms. Pasindi Weerathunge",
       role: "Vice Secretary",
-      imageSrc: "/images/vice-secretary.png",
+      imageSrc: "/pioneers/2021/vs.png",
     },
   ],
 };
@@ -177,7 +181,7 @@ const PioneersGallery = () => {
                     alt=" "
                     width={192} // Updated width
                     height={192} // Updated height
-                    className="rounded-full border-4 border-white object-cover"
+                    className="rounded-full  object-cover"
                   />
                 </div>
                 <h3 className="font-bold text-xl">{member.role}</h3>
@@ -198,7 +202,7 @@ const PioneersGallery = () => {
                     alt=" "
                     width={192} // Updated width
                     height={192} // Updated height
-                    className="rounded-full border-4 border-white object-cover"
+                    className="rounded-full  object-cover"
                   />
                 </div>
                 <h3 className="font-bold text-lg">{member.role}</h3>
