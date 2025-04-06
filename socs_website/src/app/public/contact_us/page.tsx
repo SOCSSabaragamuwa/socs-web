@@ -223,9 +223,7 @@ export default function ContactUs() {
                   className="w-full p-2 rounded text-white hover:bg-gray-600 flex justify-center items-center"
                   style={{
                     backgroundColor: "#86868699",
-                    borderWidth: "1px",
-                    borderImageSource:
-                        "linear-gradient(103.75deg, #FFFFFF 29.85%, rgba(153, 153, 153, 0) 108.02%)",
+                    borderWidth: "1px",                  
                     borderImageSlice: 1,
                   }}
               >
@@ -266,7 +264,7 @@ export default function ContactUs() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center mb-16 text-white">
-            <a href="#" className="hover:text-gray-500 flex items-center space-x-2">
+            <a target="_blank" href="https://web.facebook.com/socs.susl" className="hover:text-gray-500 flex items-center space-x-2">
               <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
@@ -274,13 +272,13 @@ export default function ContactUs() {
               <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a href="#" className="hover:text-gray-500 flex items-center space-x-2">
+            <a target="_blank" href="https://www.linkedin.com/company/society-of-computer-sciences-susl/" className="hover:text-gray-500 flex items-center space-x-2">
               <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
             <a href="mailto:socs@appsc.sab.ac.lk" className="hover:text-gray-500 flex items-center space-x-2 mr-24">
               <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: '38px' }} />
-              <p className="text-[15px]">socs@appsc.sab.ac.lk</p>
+              <p className="text-[15px]">socs@foc.sab.ac.lk</p>
             </a>
             <a href="mailto:socs@appsc.sab.ac.lk" className="hover:text-gray-500 flex  space-x-2 ml-8">
               <FontAwesomeIcon icon={faMapMarkerAlt} style={{ fontSize: '38px' }} />
