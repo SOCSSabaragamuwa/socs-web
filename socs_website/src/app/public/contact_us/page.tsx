@@ -8,7 +8,7 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Footer from "@/components/footer";
