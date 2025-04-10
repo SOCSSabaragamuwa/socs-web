@@ -6,6 +6,7 @@ import {
   faFacebookSquare,
   faInstagram,
   faLinkedin,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -263,7 +264,7 @@ export default function ContactUs() {
             <h2 className="text-white text-4xl font-bold">SOCIAL FIGURES</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center mb-16 text-white">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center mb-16 mt-20 text-white">
             <a target="_blank" href="https://web.facebook.com/socs.susl" className="hover:text-gray-500 flex items-center space-x-2">
               <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
@@ -276,19 +277,11 @@ export default function ContactUs() {
               <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a href="mailto:socs@appsc.sab.ac.lk" className="hover:text-gray-500 flex items-center space-x-2 mr-24">
-              <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: '38px' }} />
-              <p className="text-[15px]">socs@foc.sab.ac.lk</p>
+            <a target="_blank" href="https://www.youtube.com/@societyofcomputersciences-6355" className="hover:text-gray-500 flex items-center space-x-2">
+              <FontAwesomeIcon icon={faYoutube} style={{ fontSize: '38px' }} />
+              <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a href="mailto:socs@appsc.sab.ac.lk" className="hover:text-gray-500 flex  space-x-2 ml-8">
-              <FontAwesomeIcon icon={faMapMarkerAlt} style={{ fontSize: '38px' }} />
-              <p className="text-[15px]">
-                Society of Computer Sciences,<br/>
-                Faculty of Computer Sciences, <br/>
-                Sabaragamuwa University of Sri Lanka, <br/>
-                P.O. Box 02, Belihuloya, 70140, Sri Lanka.
-              </p>
-            </a>
+            
           </div>
         </section>
         <Footer />
