@@ -49,12 +49,13 @@ const EventNavbar = () => {
       {/* Dropdown Menu for Mobile Screens */}
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 py-2 space-y-2 bg-black text-left">
-          <a href="/events/LetMeHack" className="block hover:text-gray-400">Let Me Hack</a>
-          <a href="/events/FortNight" className="block hover:text-gray-400">FortNight</a>
-          <a href="#" className="block hover:text-gray-400">Virtual Rival</a>
-          <a href="#" className="block hover:text-gray-400">CodeNight</a>
-          <a href="#" className="block hover:text-gray-400">Connecting Dots</a>
-          <a href="#" className="block hover:text-gray-400">Vidunena</a>
+          <a href="LetMeHack" className="block hover:text-gray-400">Let Me Hack</a>
+          <a href="FortNight" className="block hover:text-gray-400">FortNight</a>
+          <a href="VirtualRival" className="block hover:text-gray-400">Virtual Rival</a>
+          <a href="TechTalk" className="block hover:text-gray-400">TechTalk</a>
+          <a href="CodeNight" className="block hover:text-gray-400">CodeNight</a>
+          <a href="ConnectingDots" className="block hover:text-gray-400">Connecting Dots</a>
+          <a href="Vidunena" className="block hover:text-gray-400">Vidunena</a>
         </div>
       </div>
     </nav>
