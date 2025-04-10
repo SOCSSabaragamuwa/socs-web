@@ -17,6 +17,7 @@ const EventNavbar = () => {
           <a href="LetMeHack" className="hover:text-gray-400">Let Me Hack</a>
           <a href="FortNight" className="hover:text-gray-400">FortNight</a>
           <a href="VirtualRival" className="hover:text-gray-400">Virtual Rival</a>
+          <a href="TechTalk" className="hover:text-gray-400">TechTalk</a>
           <a href="CodeNight" className="hover:text-gray-400">CodeNight</a>
           <a href="ConnectingDots" className="hover:text-gray-400">Connecting Dots</a>
           <a href="Vidunena" className="hover:text-gray-400">Vidunena</a>

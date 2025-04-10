@@ -34,8 +34,8 @@ const teamData: Record<number, Pioneer[]> = {
       imageSrc: "/pioneers/2023/treasurer.png",
     },
     {
-      name: "Mr. ABC Perera",
-      role: "Mr. P.W.C.J. Senarathna",
+      name: "Mr. P.W.C.J. Senarathna",
+      role: "Vice President",
       imageSrc: "/pioneers/2023/vp.png",
     },
     { name: "Mr. R.M.H.K. Ranasinghe",
