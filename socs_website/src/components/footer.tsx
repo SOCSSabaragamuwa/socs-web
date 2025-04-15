@@ -65,7 +65,7 @@ function Footer() {
           <a target="_blank" href="https://www.linkedin.com/company/society-of-computer-sciences-susl/" className="hover:text-gray-400">
             <i className="fa-brands fa-linkedin text-lg md:text-2xl"></i>
           </a>
-          <a href="#" className="hover:text-gray-400">
+          <a target="_blank" href="https://www.instagram.com/socs_susl_25" className="hover:text-gray-400">
             <i className="fa-brands fa-square-instagram text-lg md:text-2xl"></i>
           </a>
           <a target="_blank" href="https://www.youtube.com/@societyofcomputersciences-6355" className="hover:text-gray-400">
