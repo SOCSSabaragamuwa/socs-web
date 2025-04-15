@@ -269,7 +269,7 @@ export default function ContactUs() {
               <FontAwesomeIcon icon={faFacebookSquare} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
-            <a href="#" className="hover:text-gray-500 flex items-center space-x-2">
+            <a target="_blank" href="https://www.instagram.com/socs_susl_25" className="hover:text-gray-500 flex items-center space-x-2">
               <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '38px' }} />
               <p className="text-[15px]">Society of Computer Sciences - SUSL</p>
             </a>
