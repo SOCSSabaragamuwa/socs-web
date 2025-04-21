@@ -23,11 +23,12 @@ export default function News() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [specialNews, setSpecialNews] = useState<NewsItem[]>([]);
   const [regularNews, setRegularNews] = useState<NewsItem[]>([]);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const { data, error } = await supabase.from("news").select("*"); // Assuming table name is 'news'
+        const { data, error } = await supabase.from("news").select("*");
 
         if (error) throw error;
 
@@ -47,16 +48,14 @@ export default function News() {
   }, []);
 
   useEffect(() => {
-    if (specialNews.length > 1) {
+    if (specialNews.length > 1 && !isHovered) {
       const interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % specialNews.length);
-      }, 3000);
+      }, 5000);
 
       return () => clearInterval(interval);
-    } else {
-      setCurrentIndex(0); // Reset index if there's only one item
     }
-  }, [specialNews]);
+  }, [specialNews, isHovered]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -94,12 +93,16 @@ export default function News() {
               fadeIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="w-full max-w-[1250px] h-[430px] flex flex-col md:flex-row relative rounded-lg mx-auto px-6">
+            <div 
+              className="w-full max-w-[1250px] h-[430px] flex flex-col md:flex-row relative rounded-lg mx-auto px-6"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               {/* Left Shape */}
               <div
                 className="flex-1 flex items-center justify-center relative rounded-t-lg md:rounded-l-lg md:rounded-tr-none"
                 style={{
-                  flex: "3 1 0%", // 3/4 of the space
+                  flex: "3 1 0%",
                   borderWidth: "1px",
                   borderStyle: "solid",
                   borderColor: "white",
@@ -121,7 +124,7 @@ export default function News() {
               <div
                 className="flex-1 flex flex-col items-center justify-center relative rounded-b-lg md:rounded-r-lg md:rounded-bl-none"
                 style={{
-                  flex: "1 1 0%", // 1/4 of the space
+                  flex: "1 1 0%",
                   borderWidth: "0.5px",
                   borderStyle: "solid",
                   borderColor: "white",

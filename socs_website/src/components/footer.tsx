@@ -14,7 +14,7 @@ function Footer() {
             </h2>
             <p className="mt-4">
               <a href="mailto:socs@appsc.sab.ac.lk" className="hover:underline">
-                socs@appsc.sab.ac.lk
+                socs@foc.sab.ac.lk
               </a>
             </p>
             <p className="mt-4">Society of Computer Sciences,</p>
@@ -54,19 +54,22 @@ function Footer() {
 
         {/* Copyright Text */}
           <p className="text-sm text-center md:text-start">
-              Copyright SOCS © 2024. All rights reserved
+              Copyright SOCS © 2025. All rights reserved
           </p>
 
         {/* Social Icons */}
         <div className="flex space-x-4 mb-4 md:mb-0">
-          <a href="#" className="hover:text-gray-400">
+          <a target="_blank" href="https://web.facebook.com/socs.susl" className="hover:text-gray-400">
             <i className="fa-brands fa-square-facebook text-lg md:text-2xl"></i>
           </a>
-          <a href="#" className="hover:text-gray-400">
+          <a target="_blank" href="https://www.linkedin.com/company/society-of-computer-sciences-susl/" className="hover:text-gray-400">
             <i className="fa-brands fa-linkedin text-lg md:text-2xl"></i>
           </a>
-          <a href="#" className="hover:text-gray-400">
+          <a target="_blank" href="https://www.instagram.com/socs_susl_25" className="hover:text-gray-400">
             <i className="fa-brands fa-square-instagram text-lg md:text-2xl"></i>
+          </a>
+          <a target="_blank" href="https://www.youtube.com/@societyofcomputersciences-6355" className="hover:text-gray-400">
+            <i className="fa-brands fa-youtube text-lg md:text-2xl"></i>
           </a>
         </div>
 

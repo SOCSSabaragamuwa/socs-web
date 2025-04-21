@@ -38,7 +38,8 @@ const AnnouncementsPage = () => {
             setLoading(true);
             try {
                 const data = await fetchAll('announcements');
-                setAnnouncements(data);
+                // Reverse the array to show newest first (leftmost)
+                setAnnouncements([...data].reverse());
             } catch (error) {
                 console.error('Error fetching announcements:', error);
             } finally {
