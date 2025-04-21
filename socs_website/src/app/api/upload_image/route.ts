@@ -26,12 +26,10 @@ export async function POST(req: Request) {
                 cacheControl: '3600',
                 upsert: false,
             });
-        console.log("error 2")
         if (error) {
             console.error('Upload error:', error.message);
             return NextResponse.json({message: 'Failed to upload file'}, {status: 500});
         }
-        console.log("error")
         // Get the public URL of the uploaded file
         const {data: publicUrlData} = supabase.storage
             .from('images')
