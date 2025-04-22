@@ -4,6 +4,9 @@ import ImageSlider from "@/components/cardSliderPage";
 import Footer from "@/components/footer";
 import {Poppins} from "next/font/google";
 import EventNavbar from "@/components/events/eventsNavBar";
+import {useEffect, useState} from "react";
+import {supabase} from "@/services/supabaseClient";
+import NewsCard from "@/components/cards/newsCard";
 
 const poppins3 = Poppins({weight: "300", subsets: ["latin"]});
 
@@ -21,7 +24,33 @@ type EventProps = {
     images9: string[];
 };
 
+interface EventUpdate {
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    event?: string;
+}
+
 function Event({eventTitle, images1,images2,images3,images4,images5,images6,images7,images8,images9, description}: EventProps) {
+    const [eventUpdates, setEventUpdates] = useState<EventUpdate[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchEventNews = async () => {
+            const { data, error } = await supabase.from("events").select("*").eq("event", eventTitle);
+
+            if (error) {
+                console.error("Failed to fetch event updates:", error.message);
+            } else {
+                setEventUpdates(data || []);
+            }
+            setLoading(false);
+        };
+
+        fetchEventNews();
+    }, [eventTitle]);
+
     return (
         <div className="bg-black text-white">
             <Navbar/>
@@ -110,7 +139,28 @@ function Event({eventTitle, images1,images2,images3,images4,images5,images6,imag
             <p className="text-center text-lg mt-16 mx-10 sm:mx-20 md:mx-28">{description}</p>
 
             <div>
-                <h2 className={`${poppins3.className} text-5xl font-semibold mb-4 text-white text-center py-[70px]`}>UPDATES</h2>
+                <h2 className={`${poppins3.className} text-5xl font-semibold mb-4 text-white text-center py-[70px]`}>
+                    UPDATES
+                </h2>
+
+                <div className="flex justify-center">
+                    {loading ? (
+                        <p className="text-white">Loading...</p>
+                    ) : eventUpdates.length === 0 ? (
+                        <p className="text-white text-lg italic">No updates available.</p>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 px-4">
+                            {eventUpdates.map((item) => (
+                                <NewsCard
+                                    key={item.id}
+                                    title={item.title}
+                                    description={item.description}
+                                    imageSrc={item.image}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
             <Footer/>
         </div>

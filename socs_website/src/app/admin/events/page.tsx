@@ -1,74 +1,71 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import AdminForm from '@/components/adminForm';
-import {fetchAll, saveRecord, deleteRecord, uploadFile, deleteEventImages} from '@/services/adminService';
+import { fetchAll, saveRecord, deleteRecord, uploadFile } from '@/services/adminService';
 import Loading from "@/components/loading";
 import Alert from "@/components/alert";
 
-interface Event {
+interface EventUpdate {
     id: string;
     title: string;
     description: string;
-    mainImage: string;
-    additionalImages: string[];
+    image: string;
+    event: string;
 }
 
-const AdminEventsPage = () => {
-    const [events, setEvents] = useState<Event[]>([]);
+const EventUpdatesPage = () => {
+    const [eventUpdates, setEventUpdates] = useState<EventUpdate[]>([]);
     const [formData, setFormData] = useState({
         id: '',
         title: '',
         description: '',
-        mainImage: '',
-        additionalImages: Array(9).fill(''),
+        image: '',
+        event: '',
     });
     const [loading, setLoading] = useState(false);
-
     const [alert, setAlert] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
 
     const showAlert = (message: string, type: 'success' | 'error' | 'info') => {
-        setAlert({message, type});
+        setAlert({ message, type });
     };
 
-    const loadEvents = async () => {
+    const loadEventUpdates = async () => {
         setLoading(true);
         try {
             const data = await fetchAll('events');
-            setEvents(data);
+            setEventUpdates(data);
         } catch (error) {
-            console.error('Error fetching events:', error);
+            console.error('Error fetching event updates:', error);
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        loadEvents();
+        loadEventUpdates();
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-
-    const handleFileUpload = async (files: FileList | null, type: string, index?: number) => {
+    const handleFileUpload = async (files: FileList | null) => {
         if (!files || files.length === 0) return;
         const file = files[0];
 
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        setFormData({ ...formData, image: file });
+
         try {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const path = await uploadFile(file, `/api/events_images_upload`, 'event');
-            if (type === 'main') {
-                setFormData({...formData, mainImage: path});
-            } else if (index !== undefined) {
-                const updatedImages = [...formData.additionalImages];
-                updatedImages[index] = path;
-                setFormData({...formData, additionalImages: updatedImages});
-            }
+            showAlert('Uploading image, please wait...', 'info');
+            const imageUrl = await uploadFile(file, '/api/upload_image');
+            setFormData({ ...formData, image: imageUrl });
+            showAlert('Image uploaded successfully!', 'success');
         } catch (error) {
-            console.error('Error uploading file:', error)
+            console.error('Error uploading file:', error);
             showAlert('Failed to upload file.', 'error');
         }
     };
@@ -76,58 +73,49 @@ const AdminEventsPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+
         try {
-            await saveRecord('events', formData);
-            const data = await fetchAll('events');
-            setEvents(data);
-            setFormData({
-                id: '',
-                title: '',
-                description: '',
-                mainImage: '',
-                additionalImages: Array(9).fill(''),
-            });
-            showAlert('Event saved successfully!', 'success');
+            let imageUrl = formData.image;
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            if (formData.image instanceof File) {
+                showAlert('Uploading image, please wait...', 'info');
+                imageUrl = await uploadFile(formData.image, '/api/upload_image');
+                showAlert('Image uploaded successfully!', 'success');
+            }
+
+            await saveRecord('events', { ...formData, image: imageUrl });
+            setFormData({ id: '', title: '', description: '', image: '', event: '' });
+            showAlert('Event update saved successfully!', 'success');
+            loadEventUpdates();
         } catch (error) {
-            console.error('Error saving event:', error);
-            showAlert('Failed to save event.', 'error');
+            console.error('Error saving event update:', error);
+            showAlert('Failed to save event update.', 'error');
         } finally {
             setLoading(false);
-            loadEvents(); // Refresh the page data
         }
     };
 
-    const handleDelete = async (event: Event) => {
+    const handleDelete = async (id: string, imagePath: string) => {
         try {
-            // Collect all image paths
-            const allImagePaths = [event.mainImage, ...event.additionalImages.filter(Boolean)];
-
-            // Delete all images
-            await deleteEventImages(allImagePaths);
-
-            // Delete the record from the database
-            await deleteRecord('events', event.id);
-
-            // Refresh the events list
-            const data = await fetchAll('events');
-            setEvents(data);
-            showAlert('Event deleted successfully!', 'success');
+            await deleteRecord('events', id, imagePath);
+            showAlert('Event update deleted successfully!', 'success');
+            loadEventUpdates();
         } catch (error) {
-            console.error('Error deleting event and its images:', error);
-            showAlert('Failed to delete event.', 'error');
+            console.error('Error deleting event update:', error);
+            showAlert('Failed to delete event update.', 'error');
         } finally {
             setLoading(false);
-            loadEvents(); // Refresh the page data
         }
     };
 
-
-    if (loading) return <Loading/>;
+    if (loading) return <Loading />;
 
     return (
         <div className="min-h-screen">
-            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)}/>}
-            <h1 className="text-4xl font-semibold text-center py-8">Admin: Events</h1>
+            {alert && <Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)} />}
+            <h1 className="text-4xl font-semibold text-center py-8">Event Updates</h1>
             <AdminForm
                 fields={[
                     {
@@ -136,52 +124,63 @@ const AdminEventsPage = () => {
                         type: 'text',
                         value: formData.title,
                         onChange: handleChange,
-                        required: true
+                        required: true,
                     },
                     {
                         label: 'Description',
                         name: 'description',
                         type: 'text',
                         value: formData.description,
-                        onChange: handleChange
-                    },
-                    {
-                        label: 'Main Image',
-                        name: 'mainImage',
-                        type: 'file',
-                        onChange: (e) => handleFileUpload(e.target.files, 'main'),
+                        onChange: handleChange,
                         required: true,
                     },
-                    // @ts-expect-error: TypeScript cannot infer types for dynamically generated fields
-                    ...formData.additionalImages.map((_, index) => ({
-                        label: `Additional Image ${index + 1}`,
-                        name: `additionalImage${index}`,
+                    {
+                        label: 'Image',
+                        name: 'image',
                         type: 'file',
-                        // @ts-expect-error: Dynamic type inference for event handler
-                        onChange: (e) => handleFileUpload(e.target.files, 'additional', index),
-                    })),
+                        onChange: (e) => handleFileUpload(e.target.files),
+                        required: true,
+                    },
+                    {
+                        label: 'Event',
+                        name: 'event',
+                        type: 'select',
+                        options: [
+                            { label: 'Let Me Hack', value: 'Let Me Hack' },
+                            { label: 'FortNight', value: 'FortNight' },
+                            { label: 'Virtual Rival', value: 'Virtual Rival' },
+                            { label: 'TechTalk', value: 'TechTalk' },
+                            { label: 'CodeNight', value: 'CodeNight' },
+                            { label: 'Connecting Dots', value: 'Connecting Dots' },
+                            { label: 'Vidunena', value: 'Vidunena' },
+                        ],
+                        value: formData.event,
+                        onChange: handleChange,
+                        required: true,
+                    },
                 ]}
                 onSubmit={handleSubmit}
                 buttonText={formData.id ? 'Update Event' : 'Add Event'}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 px-6">
-                {events.map((event) => (
-                    <div key={event.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg text-center">
-                        <img src={event.mainImage} alt={event.title} className="w-full h-56 object-cover"/>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 px-6">
+                {eventUpdates.map((item) => (
+                    <div key={item.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg text-center">
+                        <img src={item.image} alt={item.title} className="w-full h-56 object-cover" />
                         <div className="p-4">
-                            <h3 className="text-xl font-bold">{event.title}</h3>
-                            <p className="mt-2">{event.description}</p>
+                            <h3 className="text-xl text-white font-bold">{item.title}</h3>
+                            <p className="text-white mt-2">{item.description}</p>
+                            <p className="text-teal-300 font-medium mt-1">Event: {item.event}</p>
                         </div>
                         <div className="flex justify-end p-4">
                             <button
-                                onClick={() => setFormData(event)}
+                                onClick={() => setFormData(item)}
                                 className="bg-yellow-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-yellow-600"
                             >
                                 Edit
                             </button>
                             <button
-                                onClick={() => handleDelete(event)}
+                                onClick={() => handleDelete(item.id, item.image)}
                                 className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                             >
                                 Delete
@@ -194,4 +193,4 @@ const AdminEventsPage = () => {
     );
 };
 
-export default AdminEventsPage;
+export default EventUpdatesPage;
