@@ -12,6 +12,41 @@ interface Pioneer {
 
 // Static members for each year
 const teamData: Record<number, Pioneer[]> = {
+  2024: [
+    {
+      name: "Mr. Shavinda Wanigasekara",
+      role: "President",
+      imageSrc: "/pioneers/2024/president.png",
+    },
+    {
+      name: "Mr. Gihan Savinda",
+      role: "Secretary",
+      imageSrc: "/pioneers/2024/secretary.png",
+    },
+    {
+      name: "Ms. P.M.A.K. Wijeratne",
+      role: "Senior Treasurer",
+      imageSrc: "/pioneers/2024/streasurer.png",
+    },
+    {
+      name: "Mr. Ravindu Chandrarathana",
+      role: "Treasurer",
+      imageSrc: "/pioneers/2024/treasurer.png",
+    },
+    {
+      name: "Mr. Sajika Dilshan",
+      role: "Vice President",
+      imageSrc: "/pioneers/2024/vp.png",
+    },
+    { name: "Ms. Kawmadi Sandakal",
+      role: "Editor",
+      imageSrc: "/pioneers/2024/editor.png" },
+    {
+      name: "Ms. Isuri Perera",
+      role: "Vice Secretary",
+      imageSrc: "/pioneers/2024/vs.png",
+    },
+  ],
   2023: [
     {
       name: "Mr. V.S.A. Vidanage ",
@@ -122,7 +157,7 @@ const teamData: Record<number, Pioneer[]> = {
 };
 
 // Available years
-const years = [2023, 2022, 2021];
+const years = [2024, 2023, 2022, 2021];
 
 const PioneersGallery = () => {
   const [selectedYearIndex, setSelectedYearIndex] = useState(0);
