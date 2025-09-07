@@ -88,7 +88,7 @@ export default function Home() {
           EXECUTIVE COMMITTEE
         </h2>
         <p className={`${poppins5.className} text-lg mb-12 text-gray-400`}>
-          Year 2024 / 2025
+          Year 2025 / 2026
         </p>
         <Committee_member_gallery />
       </section>
